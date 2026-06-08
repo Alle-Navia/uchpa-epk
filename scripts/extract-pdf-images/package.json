@@ -1,0 +1,1 @@
+{"name":"extract-pdf-images","version":"1.0.0","private":true,"type":"commonjs","dependencies":{"pdf-lib":"^1.17.1"}}

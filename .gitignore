@@ -1,0 +1,32 @@
+# Dependencias
+node_modules/
+**/node_modules/
+
+# Firebase
+.firebase/
+firebase-debug.log
+firebase-debug.*.log
+firestore-debug.log
+
+# Build / extracción temporal
+scripts/extract-pdf-images/out/
+scripts/extract-pdf-images/node_modules/
+scripts/extract-pdf-images/package-lock.json
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editores
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs
+*.log
+npm-debug.log*
+
+# Archivos pesados / temporales del proyecto
+*.zip
