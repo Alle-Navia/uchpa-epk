@@ -10,7 +10,7 @@
   --color-bg-card:   #1c1c1c;
   --color-border:    #2a2a2a;
 
-  --color-text:      #f5f1e6;
+  --color-text:      #ffffff;
   --color-text-mute: #b8b1a0;
   --color-text-dim:  #7a7468;
 
@@ -298,7 +298,7 @@ p { max-width: 60ch; }
   font-style: italic;
   font-size: clamp(1.125rem, 2.4vw, 1.75rem);
   font-weight: 400;
-  color: var(--color-text);
+  color: #ffffff;
   text-transform: none;
   letter-spacing: 0.04em;
   max-width: 60ch;
@@ -308,18 +308,18 @@ p { max-width: 60ch; }
   font-family: var(--font-serif);
   font-style: italic;
   font-size: var(--fs-md);
-  color: var(--color-text-mute);
+  color: #ffffff;
   border: 0;
   text-align: center;
 }
-.hero__quote p { max-width: none; }
+.hero__quote p { max-width: none; color: #ffffff; }
 .hero__quote p::before { content: ""; }
 .hero__quote cite {
   display: block;
   margin-top: var(--sp-3);
   font-style: normal;
   font-size: var(--fs-sm);
-  color: var(--color-text-dim);
+  color: #ffffff;
 }
 .hero__hint {
   margin: var(--sp-7) auto 0;
