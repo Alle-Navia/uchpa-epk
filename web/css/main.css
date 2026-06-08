@@ -297,29 +297,37 @@ p { max-width: 60ch; }
   font-family: var(--font-serif);
   font-style: italic;
   font-size: clamp(1.125rem, 2.4vw, 1.75rem);
-  font-weight: 400;
-  color: #ffffff;
+  font-weight: 500;
+  color: #ffffff !important;
   text-transform: none;
   letter-spacing: 0.04em;
   max-width: 60ch;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
 }
 .hero__quote {
   margin: var(--sp-7) auto 0;
   font-family: var(--font-serif);
   font-style: italic;
   font-size: var(--fs-md);
-  color: #ffffff;
+  color: #ffffff !important;
   border: 0;
   text-align: center;
 }
-.hero__quote p { max-width: none; color: #ffffff; }
+.hero__quote p {
+  max-width: none;
+  color: #ffffff !important;
+  font-weight: 500;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
+}
 .hero__quote p::before { content: ""; }
 .hero__quote cite {
   display: block;
   margin-top: var(--sp-3);
   font-style: normal;
   font-size: var(--fs-sm);
-  color: #ffffff;
+  color: #ffffff !important;
+  font-weight: 500;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.6);
 }
 .hero__hint {
   margin: var(--sp-7) auto 0;
@@ -345,16 +353,17 @@ p { max-width: 60ch; }
   align-items: center;
 }
 .sobre__copy p {
-  color: var(--color-text-mute);
+  color: #ffffff;
   margin-bottom: var(--sp-4);
   max-width: 58ch;
 }
 .sobre__copy p.lead {
   font-size: var(--fs-md);
-  color: var(--color-text);
+  color: #ffffff;
 }
 .sobre__copy p:last-child { margin-bottom: 0; }
-.sobre__copy strong { color: var(--color-text); }
+.sobre__copy strong { color: #ffffff; font-weight: 700; }
+.sobre__copy em { color: #ffffff; }
 
 @media (max-width: 900px) {
   .panel__content--split { grid-template-columns: 1fr; gap: var(--sp-5); }
