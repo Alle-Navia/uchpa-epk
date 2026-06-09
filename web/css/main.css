@@ -1302,26 +1302,9 @@ p { max-width: 60ch; }
     color: var(--color-bg);
   }
 
-  /* Indicador sutil de "desliza" entre paneles */
-  .panel:not(:last-child)::after {
-    content: "";
-    position: absolute;
-    bottom: var(--sp-4);
-    left: 50%;
-    transform: translateX(-50%);
-    width: 24px;
-    height: 24px;
-    border-right: 2px solid var(--color-accent);
-    border-bottom: 2px solid var(--color-accent);
-    transform: translateX(-50%) rotate(45deg);
-    opacity: 0.6;
-    animation: scroll-hint 2.2s ease-in-out infinite;
-    pointer-events: none;
-  }
-  @keyframes scroll-hint {
-    0%, 100% { transform: translateX(-50%) rotate(45deg) translateY(0); opacity: 0.3; }
-    50%      { transform: translateX(-50%) rotate(45deg) translateY(6px); opacity: 0.8; }
-  }
+  /* Oculta el "Desliza →" del hero en mobile (la flecha horizontal no aplica
+     en scroll vertical) */
+  .hero__hint { display: none; }
 }
 
 /* =========================================================
