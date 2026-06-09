@@ -763,8 +763,31 @@ p { max-width: 60ch; }
 /* =========================================================
    PANEL 10 · PUESTA EN ESCENA
    ========================================================= */
-.escena__copy { max-width: 75ch; }
-.escena__copy p { margin-bottom: var(--sp-4); }
+/* Puesta en escena · Parte 1 (split layout igual que Sobre/Danza Parte 1) */
+.panel--escena .escena__copy { max-width: none; }
+.panel--escena .escena__copy p {
+  max-width: 68ch;
+  margin-bottom: var(--sp-4);
+  line-height: 1.7;
+}
+.panel--escena .escena__copy p:last-child { margin-bottom: 0; }
+
+/* Puesta en escena · Parte 2 (Jechele, centrado igual que Misión / Danza Parte 2) */
+.panel--escena-jechele .panel__content {
+  text-align: center;
+  max-width: 880px;
+}
+.panel--escena-jechele .panel__header { text-align: center; }
+.panel--escena-jechele .panel__eyebrow { margin-inline: auto; }
+.escena-jechele__copy { margin: 0 auto; }
+.escena-jechele__copy p {
+  font-size: clamp(1.05rem, 1.7vw, 1.4rem);
+  font-family: var(--font-serif);
+  font-style: italic;
+  line-height: 1.55;
+  margin: 0 auto;
+  max-width: 60ch;
+}
 
 /* =========================================================
    PANEL · RIDER · más compacto, sin scroll lateral
