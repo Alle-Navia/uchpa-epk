@@ -183,4 +183,59 @@
     if (window.location.hash) return;
     deck.focus({ preventScroll: true });
   });
+
+  /* =========================================================
+     MODAL DE VIDEO YouTube
+     ========================================================= */
+  const modal       = document.getElementById('video-modal');
+  const modalTitle  = document.getElementById('video-modal-title');
+  const modalFrame  = document.getElementById('video-modal-iframe');
+  const videoBtns   = document.querySelectorAll('.video__link[data-video-id]');
+
+  if (modal && modalFrame && videoBtns.length) {
+    let lastTrigger = null;
+
+    function openVideoModal(videoId, title, trigger) {
+      lastTrigger = trigger || null;
+      modalTitle.textContent = title || 'Reproductor';
+      modalFrame.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1`;
+      modal.hidden = false;
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      requestAnimationFrame(() => {
+        modal.classList.add('is-open');
+        const closeBtn = modal.querySelector('.video-modal__close');
+        if (closeBtn) closeBtn.focus();
+      });
+    }
+
+    function closeVideoModal() {
+      modal.classList.remove('is-open');
+      modal.setAttribute('aria-hidden', 'true');
+      modalFrame.src = ''; // detiene la reproducción
+      setTimeout(() => { modal.hidden = true; }, 200);
+      document.body.style.overflow = '';
+      if (lastTrigger && typeof lastTrigger.focus === 'function') lastTrigger.focus();
+    }
+
+    videoBtns.forEach((btn) => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const id    = btn.dataset.videoId;
+        const title = btn.dataset.videoTitle;
+        if (id) openVideoModal(id, title, btn);
+      });
+    });
+
+    modal.querySelectorAll('[data-modal-close]').forEach((el) => {
+      el.addEventListener('click', closeVideoModal);
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.classList.contains('is-open')) {
+        e.preventDefault();
+        closeVideoModal();
+      }
+    });
+  }
 })();
