@@ -238,4 +238,60 @@
       }
     });
   }
+
+  /* =========================================================
+     RIDER · tabs accesibles (lista izq + panel der)
+     ========================================================= */
+  const riderTabs   = Array.from(document.querySelectorAll('.rider-tab'));
+  const riderPanels = Array.from(document.querySelectorAll('.rider-panel'));
+
+  if (riderTabs.length && riderPanels.length) {
+    function activateRiderTab(tab, setFocus = false) {
+      riderTabs.forEach((t) => {
+        const isActive = t === tab;
+        t.classList.toggle('is-active', isActive);
+        t.setAttribute('aria-selected', String(isActive));
+        t.setAttribute('tabindex', isActive ? '0' : '-1');
+      });
+      const targetId = tab.getAttribute('aria-controls');
+      riderPanels.forEach((p) => {
+        const show = p.id === targetId;
+        p.hidden = !show;
+        p.classList.toggle('is-active', show);
+      });
+      if (setFocus) tab.focus();
+    }
+
+    riderTabs.forEach((tab) => {
+      tab.addEventListener('click', () => activateRiderTab(tab));
+
+      tab.addEventListener('keydown', (e) => {
+        const idx = riderTabs.indexOf(tab);
+        let nextIdx = idx;
+        switch (e.key) {
+          case 'ArrowDown':
+          case 'ArrowRight':
+            e.preventDefault();
+            nextIdx = (idx + 1) % riderTabs.length;
+            break;
+          case 'ArrowUp':
+          case 'ArrowLeft':
+            e.preventDefault();
+            nextIdx = (idx - 1 + riderTabs.length) % riderTabs.length;
+            break;
+          case 'Home':
+            e.preventDefault();
+            nextIdx = 0;
+            break;
+          case 'End':
+            e.preventDefault();
+            nextIdx = riderTabs.length - 1;
+            break;
+          default:
+            return;
+        }
+        if (nextIdx !== idx) activateRiderTab(riderTabs[nextIdx], true);
+      });
+    });
+  }
 })();

@@ -352,48 +352,75 @@
 
     <!-- PANEL 14 · RIDER TÉCNICO -->
     <section class="panel panel--rider" id="panel-rider" aria-labelledby="rider-titulo" data-panel-index="14">
-      <div class="panel__content">
-        <header class="panel__header">
-          <p class="panel__eyebrow">Producción</p>
-          <h2 id="rider-titulo" class="panel__title">Rider técnico</h2>
-        </header>
-        <div class="rider">
-          <details class="rider__item" open>
-            <summary>Sistema P.A.</summary>
-            <div class="rider__body">
-              <p>Sistema acorde a las dimensiones del recinto. Parlantes estéreo de alta fidelidad.</p>
-              <p><strong>Mínimo:</strong> 115 dBA SPL (promedio).</p>
-              <p><strong>Cajas preferidas:</strong> Meyer Sound MILO, L-Acoustics V-DOSC, JBL Vertec, NEXO.</p>
-            </div>
-          </details>
-          <details class="rider__item">
-            <summary>Consolas</summary>
-            <div class="rider__body">
-              <p><strong>FOH y monitoreo:</strong> Yamaha PM5D / M7CL, DiGiCo SD8, Avid VENUE D-Show o equivalente.</p>
-            </div>
-          </details>
-          <details class="rider__item">
-            <summary>Monitoreo</summary>
-            <div class="rider__body">
-              <p>6 mezclas · 6 monitores de piso (Meyer Sound, JBL o NEXO) · 2 sidefills · 1 drumfill.</p>
-            </div>
-          </details>
-          <details class="rider__item">
-            <summary>Backline</summary>
-            <div class="rider__body">
-              <p><strong>Batería:</strong> 5 piezas Yamaha Oak Custom, Pearl Master Custom, Mapex, Tama o DW Collector's.</p>
-              <p><strong>Bajo:</strong> Cabezal Ampeg SVT 4 + cabinet 4x10 y 1 cabinet de 15.</p>
-              <p><strong>Guitarras:</strong> 2 cabezales Marshall JCM 900 + 2 cabinets 4x12 1960 A y 1 cabinet 4x12 1960 B.</p>
-              <p><strong>Andinos:</strong> waqrapuku, charango, quena y zampoña los provee la banda.</p>
-            </div>
-          </details>
-          <details class="rider__item">
-            <summary>Camerinos y contacto técnico</summary>
-            <div class="rider__body">
-              <p>Mínimo 2 camerinos: uno para la banda y uno para el danzante de tijeras.</p>
-              <p><strong>Sandro García C.</strong> · <a href="mailto:dumagosa@hotmail.com">dumagosa@hotmail.com</a> · <a href="tel:+51987159687">+51 987 159 687</a></p>
-            </div>
-          </details>
+      <div class="panel__content panel__content--rider">
+        <div class="rider-nav">
+          <header class="panel__header">
+            <p class="panel__eyebrow">Producción</p>
+            <h2 id="rider-titulo" class="panel__title">Rider técnico</h2>
+          </header>
+          <ul class="rider-tabs" role="tablist" aria-label="Secciones del rider técnico">
+            <li role="presentation">
+              <button id="rider-tab-pa" class="rider-tab is-active" type="button" role="tab"
+                      aria-selected="true" aria-controls="rider-panel-pa" tabindex="0">
+                Sistema P.A.
+              </button>
+            </li>
+            <li role="presentation">
+              <button id="rider-tab-consolas" class="rider-tab" type="button" role="tab"
+                      aria-selected="false" aria-controls="rider-panel-consolas" tabindex="-1">
+                Consolas
+              </button>
+            </li>
+            <li role="presentation">
+              <button id="rider-tab-monitoreo" class="rider-tab" type="button" role="tab"
+                      aria-selected="false" aria-controls="rider-panel-monitoreo" tabindex="-1">
+                Monitoreo
+              </button>
+            </li>
+            <li role="presentation">
+              <button id="rider-tab-backline" class="rider-tab" type="button" role="tab"
+                      aria-selected="false" aria-controls="rider-panel-backline" tabindex="-1">
+                Backline
+              </button>
+            </li>
+            <li role="presentation">
+              <button id="rider-tab-camerinos" class="rider-tab" type="button" role="tab"
+                      aria-selected="false" aria-controls="rider-panel-camerinos" tabindex="-1">
+                Camerinos y contacto técnico
+              </button>
+            </li>
+          </ul>
+        </div>
+
+        <div class="rider-panels">
+          <article id="rider-panel-pa" class="rider-panel is-active" role="tabpanel" aria-labelledby="rider-tab-pa">
+            <h3>Sistema P.A.</h3>
+            <p>Sistema acorde a las dimensiones del recinto. Parlantes estéreo de alta fidelidad.</p>
+            <p><strong>Mínimo:</strong> 115 dBA SPL (promedio).</p>
+            <p><strong>Cajas preferidas:</strong> Meyer Sound MILO, L-Acoustics V-DOSC, JBL Vertec, NEXO.</p>
+          </article>
+          <article id="rider-panel-consolas" class="rider-panel" role="tabpanel" aria-labelledby="rider-tab-consolas" hidden>
+            <h3>Consolas</h3>
+            <p><strong>FOH y monitoreo:</strong> Yamaha PM5D / M7CL, DiGiCo SD8, Avid VENUE D-Show o equivalente.</p>
+          </article>
+          <article id="rider-panel-monitoreo" class="rider-panel" role="tabpanel" aria-labelledby="rider-tab-monitoreo" hidden>
+            <h3>Monitoreo</h3>
+            <p>6 mezclas · 6 monitores de piso (Meyer Sound, JBL o NEXO) · 2 sidefills · 1 drumfill.</p>
+          </article>
+          <article id="rider-panel-backline" class="rider-panel" role="tabpanel" aria-labelledby="rider-tab-backline" hidden>
+            <h3>Backline</h3>
+            <p><strong>Batería:</strong> 5 piezas Yamaha Oak Custom, Pearl Master Custom, Mapex, Tama o DW Collector's.</p>
+            <p><strong>Bajo:</strong> Cabezal Ampeg SVT 4 + cabinet 4x10 y 1 cabinet de 15.</p>
+            <p><strong>Guitarras:</strong> 2 cabezales Marshall JCM 900 + 2 cabinets 4x12 1960 A y 1 cabinet 4x12 1960 B.</p>
+            <p><strong>Andinos:</strong> waqrapuku, charango, quena y zampoña los provee la banda.</p>
+          </article>
+          <article id="rider-panel-camerinos" class="rider-panel" role="tabpanel" aria-labelledby="rider-tab-camerinos" hidden>
+            <h3>Camerinos y contacto técnico</h3>
+            <p>Mínimo 2 camerinos: uno para la banda y uno para el danzante de tijeras (por vestuario ritual y preparación escénica).</p>
+            <p><strong>Técnico de sonido:</strong> Sandro García C.</p>
+            <p><strong>Correo:</strong> <a href="mailto:dumagosa@hotmail.com">dumagosa@hotmail.com</a></p>
+            <p><strong>Teléfono:</strong> <a href="tel:+51987159687">+51 987 159 687</a></p>
+          </article>
         </div>
       </div>
     </section>
