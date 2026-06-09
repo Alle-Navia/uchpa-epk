@@ -705,6 +705,10 @@ p { max-width: 60ch; }
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: var(--sp-5);
+  align-items: stretch;
+}
+.video {
+  display: flex;        /* permite que el boton hijo estire al alto de la celda */
 }
 .video__link {
   display: flex;
@@ -712,8 +716,10 @@ p { max-width: 60ch; }
   align-items: center;
   justify-content: center;
   gap: var(--sp-3);
+  width: 100%;
+  flex: 1;              /* estira al alto disponible */
+  min-height: 260px;    /* alto base parejo para todos */
   padding: var(--sp-7) var(--sp-4);
-  aspect-ratio: 16 / 10;
   background: var(--color-bg-card);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
