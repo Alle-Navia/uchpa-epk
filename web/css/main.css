@@ -1232,10 +1232,32 @@ p { max-width: 60ch; }
     min-height: 100dvh;
     height: auto;
     scroll-snap-align: start;
-    padding: var(--sp-7) var(--sp-4);
+    padding: var(--sp-7) var(--sp-6);     /* mas margen lateral en mobile */
   }
-  .panel__title { font-size: clamp(1.85rem, 8vw, 2.5rem); }
-  .panel__eyebrow { font-size: 0.7rem; }
+  .panel__title { font-size: clamp(1.65rem, 7vw, 2.2rem); }
+  .panel__eyebrow { font-size: 0.65rem; }
+
+  /* Tipografía mas chica en mobile (~2 puntos menos en cuerpo de texto) */
+  .panel p,
+  .panel li,
+  .panel dd,
+  .panel cite,
+  .danza__copy p,
+  .sobre__copy p,
+  .escena__copy p,
+  .mision__copy p,
+  .danza-uchpa__copy p,
+  .escena-jechele__copy p,
+  .rider-panel p,
+  .reconocimiento p,
+  .timeline__item p,
+  .integrante p,
+  .disco__meta,
+  .disco__translation {
+    font-size: var(--fs-sm);
+    line-height: 1.55;
+  }
+  .panel__title span { font-size: 0.55em; }  /* subtitulo italic mas chico tambien */
 
   /* ---------- HUD vertical (flechas arriba/abajo) ---------- */
   .hud { bottom: 0.75rem; padding: var(--sp-1) var(--sp-2); gap: var(--sp-2); }
