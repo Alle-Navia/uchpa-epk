@@ -969,6 +969,17 @@ p { max-width: 60ch; }
   height: 18px;
   flex-shrink: 0;
 }
+/* Separador de fila: fuerza un salto de linea entre los 3 primeros (YT/Spotify/Tidal)
+   y los 2 ultimos (Instagram/Facebook), manteniendo ambos grupos centrados */
+.redes__break {
+  flex-basis: 100%;
+  width: 100%;
+  height: 0;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  list-style: none;
+}
 
 .contacto__credits {
   font-size: var(--fs-xs);
