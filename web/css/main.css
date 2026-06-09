@@ -422,11 +422,18 @@ p { max-width: 60ch; }
 /* =========================================================
    PANEL 4 · INTEGRANTES
    ========================================================= */
+/* Panel integrantes · sin scrollbar visible */
+.panel--integrantes .panel__content {
+  overflow: hidden;
+  scrollbar-width: none;
+}
+.panel--integrantes .panel__content::-webkit-scrollbar { display: none; width: 0; height: 0; }
+
 .integrantes-row {
   list-style: none;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
+  grid-template-columns: repeat(7, minmax(0, 1fr));
   gap: var(--sp-4);
   align-items: start;
 }
@@ -435,6 +442,7 @@ p { max-width: 60ch; }
   display: flex;
   flex-direction: column;
   align-items: center;
+  min-width: 0;
 }
 .integrante__photo {
   width: clamp(90px, 11vw, 150px);
