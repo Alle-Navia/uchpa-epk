@@ -1281,14 +1281,14 @@ p { max-width: 60ch; }
   .panel {
     flex: 0 0 auto;
     width: 100vw;
-    min-height: 100vh;
-    min-height: 100dvh;
+    min-height: auto;                     /* sin altura forzada — el contenido manda */
     height: auto;
     scroll-snap-align: start;
-    padding: var(--sp-7) var(--sp-6);     /* mas margen lateral en mobile */
+    padding: var(--sp-7) var(--sp-5);     /* margen lateral equilibrado para cards */
   }
   .panel__title { font-size: clamp(1.65rem, 7vw, 2.2rem); }
   .panel__eyebrow { font-size: 0.65rem; }
+  .panel__header { margin-bottom: var(--sp-4); }
 
   /* Tipografía mas chica en mobile (~2 puntos menos en cuerpo de texto) */
   .panel p,
@@ -1312,11 +1312,30 @@ p { max-width: 60ch; }
   }
   .panel__title span { font-size: 0.55em; }  /* subtitulo italic mas chico tambien */
 
-  /* Boton EPK ajustado a mobile (menos padding, icono mas chico) */
-  .epk-download { padding: var(--sp-3) var(--sp-5); gap: var(--sp-2); }
-  .epk-download__icon { width: 22px; height: 22px; }
-  .epk-download__label { font-size: var(--fs-sm); }
-  .epk-download__sub { font-size: 0.65rem; }
+  /* Boton EPK compactado para mobile */
+  .epk-download {
+    padding: var(--sp-2) var(--sp-4);
+    gap: var(--sp-2);
+    margin-bottom: var(--sp-5);
+    box-shadow: 0 6px 14px rgba(212, 164, 55, 0.22);
+  }
+  .epk-download__icon { width: 18px; height: 18px; }
+  .epk-download__label { font-size: var(--fs-xs); letter-spacing: 0.08em; }
+  .epk-download__sub { font-size: 0.6rem; margin-top: 2px; letter-spacing: 0.1em; }
+
+  /* Tarjetas con espacio interno mas balanceado para mobile */
+  .contacto__grid { gap: var(--sp-3); margin-bottom: var(--sp-5); }
+  .contacto__card { padding: var(--sp-5); }
+  .reconocimiento { padding: var(--sp-4); }
+  .rider-panel { padding: var(--sp-4); }
+  .integrantes-row { gap: var(--sp-3); }
+  .timeline { gap: var(--sp-2); }
+  .discografia { gap: var(--sp-3); }
+  .videos { gap: var(--sp-3); }
+  .reconocimientos { gap: var(--sp-3); }
+
+  /* Espacio entre header del panel y contenido reducido */
+  .panel__content { gap: var(--sp-3); }
 
   /* ---------- HUD vertical (flechas arriba/abajo) ---------- */
   .hud { bottom: 0.75rem; padding: var(--sp-1) var(--sp-2); gap: var(--sp-2); }
