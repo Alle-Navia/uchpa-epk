@@ -888,20 +888,26 @@ p { max-width: 60ch; }
 }
 
 /* =========================================================
-   PANEL 12 · CONTACTO
+   PANEL · CONTACTO · todo centrado + redes con ícono
    ========================================================= */
+.panel--contacto .panel__content { text-align: center; }
+.panel--contacto .panel__header { text-align: center; }
+.panel--contacto .panel__eyebrow { margin-inline: auto; }
+
 .contacto__grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: var(--sp-5);
-  margin-bottom: var(--sp-6);
+  margin: 0 auto var(--sp-6);
   max-width: 800px;
+  text-align: left;
 }
 .contacto__card {
   background: var(--color-bg-card);
   padding: var(--sp-6);
   border-radius: var(--radius-md);
   border-top: 3px solid var(--color-accent);
+  text-align: center;
 }
 .contacto__card h3 {
   font-size: var(--fs-xs);
@@ -915,12 +921,16 @@ p { max-width: 60ch; }
   font-family: var(--font-display);
   font-size: var(--fs-md);
   color: var(--color-text);
-  margin-bottom: var(--sp-3);
+  margin: 0 auto var(--sp-3);
   letter-spacing: 0.04em;
+  max-width: none;
 }
 .contacto__card a { color: var(--color-text); }
 .contacto__card a:hover { color: var(--color-accent); }
-.contacto__card p { margin-bottom: var(--sp-2); }
+.contacto__card p {
+  margin: 0 auto var(--sp-2);
+  max-width: none;
+}
 .contacto__card p:last-child { margin-bottom: 0; }
 
 .redes {
@@ -928,12 +938,15 @@ p { max-width: 60ch; }
   padding: 0;
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: var(--sp-2);
   max-width: 900px;
-  margin-bottom: var(--sp-5);
+  margin: 0 auto var(--sp-5);
 }
 .redes a {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
   padding: var(--sp-2) var(--sp-4);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-sm);
@@ -944,6 +957,12 @@ p { max-width: 60ch; }
 .redes a:hover {
   border-color: var(--color-accent);
   color: var(--color-accent);
+  transform: translateY(-2px);
+}
+.redes__icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
 }
 
 .contacto__credits {
@@ -1263,12 +1282,15 @@ p { max-width: 60ch; }
   border-radius: var(--radius-md);
   padding: var(--sp-4);
 }
-.escenario__caption {
-  font-family: var(--font-body);
-  font-size: var(--fs-sm);
-  letter-spacing: 0.05em;
+.escenario__subtitle {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(0.95rem, 1.2vw, 1.125rem);
+  letter-spacing: 0.03em;
   color: #ffffff;
-  opacity: 0.85;
+  opacity: 0.9;
+  margin: var(--sp-3) auto 0;
+  max-width: 70ch;
 }
 
 /* =========================================================
