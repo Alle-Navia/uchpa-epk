@@ -490,11 +490,11 @@ p { max-width: 60ch; }
 /* =========================================================
    PANEL · DANZA DE TIJERAS (parte 1 y parte 2)
    Usa el split layout de Sobre: header izquierda + texto derecha
+   Mismos margenes/proporciones que .sobre__copy
    ========================================================= */
-.panel--danza .danza__copy {
-  max-width: 58ch;
-}
+.panel--danza .danza__copy { max-width: none; }
 .panel--danza .danza__copy p {
+  max-width: 68ch;
   margin-bottom: var(--sp-4);
   line-height: 1.7;
 }
