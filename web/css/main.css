@@ -488,41 +488,26 @@ p { max-width: 60ch; }
    PANEL 5 · DANZA
    ========================================================= */
 /* =========================================================
-   PANEL 5 · DANZA · texto en dos bloques (Origen / En UCHPA)
+   PANEL · DANZA DE TIJERAS (parte 1 y parte 2)
    ========================================================= */
 .panel--danza .panel__content {
-  max-width: 1200px;
+  max-width: 900px;
 }
-.danza__copy p { margin-bottom: var(--sp-4); }
+.danza__copy { max-width: 70ch; }
+.danza__copy p {
+  margin-bottom: var(--sp-4);
+  font-size: clamp(1rem, 1.2vw, 1.125rem);
+  line-height: 1.7;
+}
+.danza__copy p:last-child { margin-bottom: 0; }
 
-.danza__copy--two-cols {
-  display: grid;
-  grid-template-columns: 1.4fr 1fr;
-  gap: var(--sp-7);
-  align-items: start;
-}
-.danza__block {
-  position: relative;
-  padding-left: var(--sp-5);
-  border-left: 2px solid var(--color-accent-deep);
-}
-.danza__block p { max-width: 56ch; }
-.danza__block p:last-child { margin-bottom: 0; }
-
-.danza__block-label {
-  display: block;
-  font-family: var(--font-body);
-  font-size: var(--fs-xs);
-  font-weight: 600;
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
-  color: var(--color-accent) !important;
-  margin-bottom: var(--sp-3);
-}
-
-@media (max-width: 900px) {
-  .danza__copy--two-cols { grid-template-columns: 1fr; gap: var(--sp-5); }
-  .danza__block { padding-left: var(--sp-4); }
+/* En la parte 2 (En UCHPA) centramos por ser más corta */
+.panel--danza-2 .panel__content { text-align: center; }
+.panel--danza-2 .panel__header { text-align: center; }
+.panel--danza-2 .danza__copy { margin: 0 auto; }
+.panel--danza-2 .danza__copy p {
+  font-size: clamp(1.05rem, 1.4vw, 1.25rem);
+  line-height: 1.7;
 }
 
 /* =========================================================
