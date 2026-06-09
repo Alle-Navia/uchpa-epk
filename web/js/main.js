@@ -15,6 +15,9 @@
 
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
+  /* ---------- Marcar que JS esta activo (gobierna animaciones) ---------- */
+  document.body.classList.add('js-anim');
+
   /* ---------- Generar chispas titilando ---------- */
   const sparksHost = document.querySelector('.ambient__sparks');
   if (sparksHost && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
@@ -61,8 +64,9 @@
     }
   }
 
-  /* ---------- Detección del panel activo via IntersectionObserver ---------- */
+  /* ---------- Detección del panel activo + reveal animation ---------- */
   if ('IntersectionObserver' in window) {
+    // Observer principal: detecta panel activo (para el HUD)
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -81,6 +85,25 @@
       }
     );
     panels.forEach((p) => observer.observe(p));
+
+    // Pre-marcar el primer panel como visible (sin esperar al observer)
+    if (panels[0]) panels[0].classList.add('is-visible');
+
+    // Observer de reveal: dispara la animacion de aparicion del contenido
+    const revealObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && entry.intersectionRatio >= 0.2) {
+            entry.target.classList.add('is-visible');
+          }
+        });
+      },
+      {
+        root: isMobileLayout ? null : deck,
+        threshold: [0.2, 0.4]
+      }
+    );
+    panels.forEach((p) => revealObserver.observe(p));
   }
 
   function updateHUD() {

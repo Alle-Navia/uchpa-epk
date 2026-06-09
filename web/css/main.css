@@ -1237,9 +1237,14 @@ p { max-width: 60ch; }
   .panel__title { font-size: clamp(1.85rem, 8vw, 2.5rem); }
   .panel__eyebrow { font-size: 0.7rem; }
 
+  /* ---------- HUD vertical (flechas arriba/abajo) ---------- */
   .hud { bottom: 0.75rem; padding: var(--sp-1) var(--sp-2); gap: var(--sp-2); }
   .hud__btn { width: 38px; height: 38px; }
   .hud__indicator { font-size: var(--fs-sm); min-width: 48px; }
+  .hud__btn--prev span { display: none; }
+  .hud__btn--next span { display: none; }
+  .hud__btn--prev::before { content: "↑"; font-size: var(--fs-md); font-weight: 700; }
+  .hud__btn--next::before { content: "↓"; font-size: var(--fs-md); font-weight: 700; }
 
   .brand-mark { top: 0.75rem; left: 0.75rem; padding: var(--sp-1) var(--sp-2); }
   .brand-mark span { font-size: var(--fs-sm); }
@@ -1257,6 +1262,176 @@ p { max-width: 60ch; }
 
   /* Diagrama escenario · scroll horizontal interno si la imagen no entra */
   .escenario__svg { max-height: 60vh; }
+
+  /* ---------- Micro-interacciones tactiles (mobile) ---------- */
+  .integrante:active .integrante__photo {
+    transform: scale(1.08);
+    filter: grayscale(0);
+    box-shadow: var(--shadow-glow);
+    transition: transform 150ms, filter 150ms, box-shadow 150ms;
+  }
+  .reconocimiento:active {
+    transform: scale(1.04);
+    transition: transform 120ms;
+  }
+  .disco:active,
+  .timeline__item:active,
+  .contacto__card:active {
+    transform: translateY(-3px) scale(0.99);
+    transition: transform 120ms;
+  }
+  .video__link:active {
+    transform: scale(0.98);
+    box-shadow: var(--shadow-glow);
+    transition: transform 120ms, box-shadow 120ms;
+  }
+  .redes a:active {
+    transform: scale(0.96);
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+    transition: all 120ms;
+  }
+  .rider-tab:active {
+    background: var(--color-accent-deep);
+    color: var(--color-bg);
+    transition: all 120ms;
+  }
+  .hud__btn:active {
+    transform: scale(0.9);
+    background: var(--color-accent);
+    color: var(--color-bg);
+  }
+
+  /* Indicador sutil de "desliza" entre paneles */
+  .panel:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    bottom: var(--sp-4);
+    left: 50%;
+    transform: translateX(-50%);
+    width: 24px;
+    height: 24px;
+    border-right: 2px solid var(--color-accent);
+    border-bottom: 2px solid var(--color-accent);
+    transform: translateX(-50%) rotate(45deg);
+    opacity: 0.6;
+    animation: scroll-hint 2.2s ease-in-out infinite;
+    pointer-events: none;
+  }
+  @keyframes scroll-hint {
+    0%, 100% { transform: translateX(-50%) rotate(45deg) translateY(0); opacity: 0.3; }
+    50%      { transform: translateX(-50%) rotate(45deg) translateY(6px); opacity: 0.8; }
+  }
+}
+
+/* =========================================================
+   REVEAL ANIMATION · contenido aparece con fade-up al hacer scroll
+   Funciona tanto en desktop (panel cambia) como mobile (scroll vertical)
+   ========================================================= */
+.js-anim .panel__content > * {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 700ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.js-anim .panel.is-visible .panel__content > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+/* Stagger: cada hijo aparece con un retraso progresivo */
+.js-anim .panel.is-visible .panel__content > *:nth-child(1) { transition-delay: 60ms; }
+.js-anim .panel.is-visible .panel__content > *:nth-child(2) { transition-delay: 200ms; }
+.js-anim .panel.is-visible .panel__content > *:nth-child(3) { transition-delay: 340ms; }
+.js-anim .panel.is-visible .panel__content > *:nth-child(n+4) { transition-delay: 480ms; }
+
+/* Items dentro de grids tambien reciben fade-up con su propio stagger */
+.js-anim .panel.is-visible .integrante,
+.js-anim .panel.is-visible .timeline__item,
+.js-anim .panel.is-visible .disco,
+.js-anim .panel.is-visible .video,
+.js-anim .panel.is-visible .reconocimiento,
+.js-anim .panel.is-visible .contacto__card,
+.js-anim .panel.is-visible .redes li,
+.js-anim .panel.is-visible .ficha__row {
+  animation: item-fade-up 700ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: calc(300ms + var(--item-delay, 0ms));
+}
+.js-anim .panel.is-visible .integrante:nth-child(1) { --item-delay: 0ms; }
+.js-anim .panel.is-visible .integrante:nth-child(2) { --item-delay: 70ms; }
+.js-anim .panel.is-visible .integrante:nth-child(3) { --item-delay: 140ms; }
+.js-anim .panel.is-visible .integrante:nth-child(4) { --item-delay: 210ms; }
+.js-anim .panel.is-visible .integrante:nth-child(5) { --item-delay: 280ms; }
+.js-anim .panel.is-visible .integrante:nth-child(6) { --item-delay: 350ms; }
+.js-anim .panel.is-visible .integrante:nth-child(7) { --item-delay: 420ms; }
+
+.js-anim .panel.is-visible .timeline__item:nth-child(1)  { --item-delay: 0ms; }
+.js-anim .panel.is-visible .timeline__item:nth-child(2)  { --item-delay: 50ms; }
+.js-anim .panel.is-visible .timeline__item:nth-child(3)  { --item-delay: 100ms; }
+.js-anim .panel.is-visible .timeline__item:nth-child(4)  { --item-delay: 150ms; }
+.js-anim .panel.is-visible .timeline__item:nth-child(5)  { --item-delay: 200ms; }
+.js-anim .panel.is-visible .timeline__item:nth-child(6)  { --item-delay: 250ms; }
+.js-anim .panel.is-visible .timeline__item:nth-child(7)  { --item-delay: 300ms; }
+.js-anim .panel.is-visible .timeline__item:nth-child(8)  { --item-delay: 350ms; }
+.js-anim .panel.is-visible .timeline__item:nth-child(9)  { --item-delay: 400ms; }
+.js-anim .panel.is-visible .timeline__item:nth-child(10) { --item-delay: 450ms; }
+.js-anim .panel.is-visible .timeline__item:nth-child(11) { --item-delay: 500ms; }
+.js-anim .panel.is-visible .timeline__item:nth-child(12) { --item-delay: 550ms; }
+.js-anim .panel.is-visible .timeline__item:nth-child(13) { --item-delay: 600ms; }
+
+.js-anim .panel.is-visible .disco:nth-child(1) { --item-delay: 0ms; }
+.js-anim .panel.is-visible .disco:nth-child(2) { --item-delay: 90ms; }
+.js-anim .panel.is-visible .disco:nth-child(3) { --item-delay: 180ms; }
+.js-anim .panel.is-visible .disco:nth-child(4) { --item-delay: 270ms; }
+.js-anim .panel.is-visible .disco:nth-child(5) { --item-delay: 360ms; }
+
+.js-anim .panel.is-visible .video:nth-child(1) { --item-delay: 0ms; }
+.js-anim .panel.is-visible .video:nth-child(2) { --item-delay: 120ms; }
+.js-anim .panel.is-visible .video:nth-child(3) { --item-delay: 240ms; }
+
+.js-anim .panel.is-visible .reconocimiento:nth-child(1) { --item-delay: 0ms; }
+.js-anim .panel.is-visible .reconocimiento:nth-child(2) { --item-delay: 150ms; }
+
+.js-anim .panel.is-visible .contacto__card:nth-child(1) { --item-delay: 0ms; }
+.js-anim .panel.is-visible .contacto__card:nth-child(2) { --item-delay: 130ms; }
+
+.js-anim .panel.is-visible .redes li:nth-child(1) { --item-delay: 0ms; }
+.js-anim .panel.is-visible .redes li:nth-child(2) { --item-delay: 60ms; }
+.js-anim .panel.is-visible .redes li:nth-child(3) { --item-delay: 120ms; }
+.js-anim .panel.is-visible .redes li:nth-child(5) { --item-delay: 200ms; }
+.js-anim .panel.is-visible .redes li:nth-child(6) { --item-delay: 260ms; }
+
+.js-anim .panel.is-visible .ficha__row:nth-child(1) { --item-delay: 0ms; }
+.js-anim .panel.is-visible .ficha__row:nth-child(2) { --item-delay: 60ms; }
+.js-anim .panel.is-visible .ficha__row:nth-child(3) { --item-delay: 120ms; }
+.js-anim .panel.is-visible .ficha__row:nth-child(4) { --item-delay: 180ms; }
+.js-anim .panel.is-visible .ficha__row:nth-child(5) { --item-delay: 240ms; }
+.js-anim .panel.is-visible .ficha__row:nth-child(6) { --item-delay: 300ms; }
+.js-anim .panel.is-visible .ficha__row:nth-child(7) { --item-delay: 360ms; }
+.js-anim .panel.is-visible .ficha__row:nth-child(8) { --item-delay: 420ms; }
+
+@keyframes item-fade-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Respeta prefers-reduced-motion: deshabilita todas las reveal animations */
+@media (prefers-reduced-motion: reduce) {
+  .js-anim .panel__content > *,
+  .js-anim .panel.is-visible .panel__content > *,
+  .js-anim .panel.is-visible .integrante,
+  .js-anim .panel.is-visible .timeline__item,
+  .js-anim .panel.is-visible .disco,
+  .js-anim .panel.is-visible .video,
+  .js-anim .panel.is-visible .reconocimiento,
+  .js-anim .panel.is-visible .contacto__card,
+  .js-anim .panel.is-visible .redes li,
+  .js-anim .panel.is-visible .ficha__row {
+    opacity: 1;
+    transform: none;
+    animation: none;
+    transition: none;
+  }
 }
 
 /* =========================================================
