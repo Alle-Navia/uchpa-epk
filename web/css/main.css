@@ -592,17 +592,22 @@ p { max-width: 60ch; }
 }
 
 /* =========================================================
-   PANEL 7 · TIMELINE
+   PANEL · TRAYECTORIA · timeline compacta para no chocar con el HUD
    ========================================================= */
+.panel--trayectoria .panel__content {
+  padding-bottom: var(--sp-8); /* reserva espacio para el HUD inferior */
+}
+.panel--trayectoria .panel__header { margin-bottom: var(--sp-5); }
+
 .timeline {
   list-style: none;
-  padding: var(--sp-3) 0;
+  padding: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: var(--sp-4);
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: var(--sp-3);
 }
 .timeline__item {
-  padding: var(--sp-4);
+  padding: var(--sp-3) var(--sp-4);
   background: var(--color-bg-card);
   border-radius: var(--radius-md);
   border-left: 3px solid var(--color-accent-deep);
@@ -615,13 +620,13 @@ p { max-width: 60ch; }
 .timeline__item time {
   display: block;
   font-family: var(--font-display);
-  font-size: var(--fs-lg);
+  font-size: var(--fs-md);
   color: var(--color-accent);
-  margin-bottom: var(--sp-2);
+  margin-bottom: var(--sp-1);
   letter-spacing: 0.04em;
 }
 .timeline__item p {
-  font-size: var(--fs-sm);
+  font-size: var(--fs-xs);
   line-height: 1.4;
 }
 .timeline__item--highlight {
