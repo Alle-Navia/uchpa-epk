@@ -321,10 +321,10 @@ p { max-width: 60ch; }
   font-family: var(--font-serif);
   font-style: italic;
   font-size: clamp(1.125rem, 2.4vw, 1.75rem);
-  font-weight: 500;
+  font-weight: 600;
   color: #ffffff !important;
   text-transform: none;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.03em;
   max-width: 60ch;
   text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
 }
@@ -334,13 +334,14 @@ p { max-width: 60ch; }
   font-style: italic;
   font-size: var(--fs-md);
   color: #ffffff !important;
+  font-weight: 600;
   border: 0;
   text-align: center;
 }
 .hero__quote p {
   max-width: none;
   color: #ffffff !important;
-  font-weight: 500;
+  font-weight: 600;
   text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
 }
 .hero__quote p::before { content: ""; }
@@ -350,7 +351,7 @@ p { max-width: 60ch; }
   font-style: normal;
   font-size: var(--fs-sm);
   color: #ffffff !important;
-  font-weight: 500;
+  font-weight: 600;
   text-shadow: 0 1px 8px rgba(0, 0, 0, 0.6);
 }
 .hero__hint {
